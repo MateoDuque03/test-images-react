@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useImagesContext } from "../context/useImageContext";
 
-export function useElementOnScreen(){
+export function useInfiniteScroll(){
   const { getListImages, setPage } = useImagesContext();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchImages = async () => {
     setLoading(true);
+    // Add this setTimeout to simulate response API
     setTimeout(async() => {
       await getListImages()
       setLoading(false);
-    }, 2000)
-    
+    }, 1500)
   };
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { Image } from '../models/Image';
-import { getImages, getImagesByName } from "../services/images";
+import { getImages, getImagesByName, setLikeToImage } from "../services/images";
 
 type AuthContextType = {
   listImages: Image[] | null;
@@ -8,6 +8,7 @@ type AuthContextType = {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   getListImages: () => void;
   getByName: (search: string) => void;
+  setNewLike: (id: number) => void;
 }
 
 const ImageContext = createContext<AuthContextType | undefined>(undefined);
@@ -21,7 +22,6 @@ export function useImagesContext() {
   if (context === undefined) {
     throw new Error("useImagesContext must be used within an ImageContextProvider");
   }
-
   return context;
 }
 
@@ -31,36 +31,49 @@ export const ImageContextProvider = ({ children }: ImageProviderProps) => {
 
   const getListImages = async () => {
     try {
-			const listImages = await getImages(page)
+      const listImages = await getImages(page)
       const newImages = listImages.map((image: Image, index: number) => ({
         ...image,
-        id: `${Date.now()}-${image.id}-${page}-${index}` // Crea un ID único basado en la página
+        id: `${Date.now()}-${image.id}-${page}-${index}`
       }));
-
-      console.log({newImages})
-
       setListImages((prevImages: any) => [...prevImages, ...newImages])
-			// setListImages(listImages)
-		} catch (error) {
-			console.error(error)
-		}
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   const getByName = async (search: string) => {
     try {
-			const listImages = await getImagesByName(search)
-			setListImages(listImages)
-		} catch (error) {
-			console.error(error)
-		}
+      const listImages = await getImagesByName(search)
+      setListImages(listImages)
+    } catch (error) {
+      console.error(error)
+    }
   };
+
+  const setNewLike = async (id: number) => {
+    try {
+      await setLikeToImage(id)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   useEffect(() => {
     getListImages();
   }, []);
 
   return (
-    <ImageContext.Provider value={{ listImages, page, setPage, getListImages, getByName }}>
+    <ImageContext.Provider
+      value={{
+        listImages,
+        page,
+        setPage,
+        getListImages,
+        getByName,
+        setNewLike
+      }}
+    >
       {children}
     </ImageContext.Provider>
   );

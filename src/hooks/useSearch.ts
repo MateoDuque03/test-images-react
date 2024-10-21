@@ -1,12 +1,12 @@
 import { useRef, useState } from "react"
 
 export function useSearch() {
-	const [search, setSearch] = useState('')
-	const [error, setError] = useState('')
-	const [isDirty, setIsDirty] = useState(false);
-	const isFirstSearch = useRef(true) // Sirve para persistir un estado en el tiempo sin refrescar el componente
+	const [search, setSearch] = useState<string>('')
+	const [error, setError] = useState<string>('')
+	const [isDirty, setIsDirty] = useState<boolean>(false);
+	const isFirstSearch = useRef<boolean>(true)
 
-	const hasError = (search: string) => {
+	const hasError = (search: string) : boolean => {
 		if (isFirstSearch.current === true) {
 			isFirstSearch.current = false;
 		}
