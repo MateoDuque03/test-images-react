@@ -73,16 +73,32 @@ Si no dispones de photoshop puedes usar [photopea](https://www.photopea.com/).
 Se valorarán el uso e implementación de tests.
 
 
-// Pendings
-Scroll infinito
-Like/Unlike
-poner botones web like/unlike
-mejora para mostrar imagen en desktop o mobile
-contextProvider
-pruebas unitarias
-
-Preguntas Recruiter
-Se necesita persistir la data? Imagenes que le he dado likes
-El icono de refresh sería para que? Eliminaría el like o todos los likes
-
 # test-images-react
+
+Esta es una aplicación web desarrollada con React y utilizando Vite como herramienta de compilación, lo que permite crear aplicaciones de manera rápida y eficiente. El proyecto está escrito en TypeScript, con un enfoque en código limpio, estructura organizada y de fácil comprensión.
+
+Características principales:
+- Vite: Utilizado como herramienta de compilación para una configuración ágil y rápida.
+- TypeScript: Asegura un desarrollo más robusto con tipado estático.
+- Context API: Implementado para gestionar el estado global y las peticiones a la API.
+- Custom Hooks: Se crearon para una separación clara de responsabilidades y un código más fácil de mantener. Algunos ejemplos incluyen el uso de hooks personalizados como useDebounce para optimizar el filtrado al escribir.
+- Debounce: El hook useDebounce asegura que la petición de filtrado de imágenes se realice solo cuando el usuario deja de escribir, evitando llamadas excesivas a la API.
+- Diseño responsive: Se ha desarrollado tanto para web como para dispositivos móviles.
+- Validaciones: Se incluyen validaciones durante el proceso de filtrado de imágenes para mejorar la experiencia del usuario.
+- Infinite Scroll: Al hacer scroll, se carga más contenido automáticamente y se muestra un indicador de carga.
+- Pruebas unitarias: Se han implementado tests unitarios utilizando Jest y Vitest para garantizar la funcionalidad correcta de la aplicación.
+- Pasos para ejecutar el proyecto:
+
+Instalar dependencias:
+`npm install`
+Ejecuta este comando para instalar todas las dependencias necesarias para que el proyecto funcione correctamente.
+
+Simular la API con mocks:
+`npm run mocks`
+Este comando ejecuta @mocks-server/main, que simula las respuestas de la API, permitiendo realizar pruebas sin necesidad de una API real.
+
+Ejecutar la aplicación:
+`npm run dev`
+Este comando inicia el servidor de desarrollo, donde podrás ver la interfaz gráfica y probar la funcionalidad de la aplicación.
+
+![alt text](image.png)

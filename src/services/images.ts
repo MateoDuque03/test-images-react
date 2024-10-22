@@ -9,12 +9,12 @@ export const getImages = async (page: number) => {
     const json = await response.json()
     return json
   } catch (error) {
-    console.error("Error fetching data");
+    console.error("Error fetching data")
   }
 }
 
 export const getImagesByName = async (search: string) => {
-	if (!search) return [];
+	if (search === '') return [];
 
 	try {
     const response = await fetch(
@@ -24,7 +24,7 @@ export const getImagesByName = async (search: string) => {
     const images = json.filter((image: Image) => image.title.toLowerCase().includes(search.toLowerCase()))
 		return images
   } catch (error) {
-    console.error("Error fetching data");
+    console.error("Error fetching data")
   }
 };
 
@@ -38,7 +38,7 @@ export const setLikeToImage = async (id: number) => {
     )
     return response.status
   } catch (error) {
-    console.error("Error fetching data");
+    console.error("Error fetching data")
   }
 };
 

@@ -34,7 +34,7 @@ const Header = () => {
 	return (
 		<>
 			<img src={logo} className='header-icon' />
-			<form action="form" onSubmit={handleSubmit}>
+			<form role='form' action="form" onSubmit={handleSubmit}>
 				<div className="search-bar">
 					<i className="search-icon fas fa-search"></i>
 					<input

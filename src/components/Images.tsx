@@ -19,12 +19,12 @@ export function Images() {
               <img
                 className='img-desktop'
                 src={image.main_attachment.big}
-                alt={image.title}
+                alt={image.main_attachment.big}
               />
               <img
                 className='img-mobile'
                 src={image.main_attachment.small}
-                alt={image.title}
+                alt={image.main_attachment.small}
               />
               <p className='title-image'>{image.title.toUpperCase()}</p>
               <p>
@@ -35,7 +35,7 @@ export function Images() {
             <div className='image-footer'>
               <div className='image-footer-like'>
                 <span>{image.likes_count}</span>
-                <i className="fab fa-gratipay" onClick={() => setNewLike(image.id)}></i>
+                <i role="like" className="fab fa-gratipay" onClick={() => setNewLike(image.id)}></i>
               </div>
               <div className='image-footer-reset'>
                 <i className="fas fa-redo"></i>
